@@ -21,7 +21,11 @@ public class RotaController {
         // TODO test methods
         var rota = new RotaEntity();
 
-        System.out.println("1: Salvar Rota" + "\n2: Atualizar Rota" + "\n3: Deletar Rota" + "\n4: Buscar Rota Por Id" + "\n5: Buscar Todas");
+        System.out.println("1: Salvar Rota" +
+                "\n2: Atualizar Rota" +
+                "\n3: Deletar Rota" +
+                "\n4: Buscar Rota Por Id" +
+                "\n5: Buscar Todas");
         int opcao = ler.nextInt();
 
         switch (opcao) {
