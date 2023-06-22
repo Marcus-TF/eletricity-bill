@@ -45,6 +45,9 @@ public class ContratoController {
             case 2:
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
+                if (Objects.isNull(contratoService.findById(idUpdate))) {
+                    throw new NoResultException("Contract not found!");
+                }
                 contrato.setDescricao("Gato removido!");
                 contrato.setDataInicio(Date.valueOf(LocalDate.now()));
                 contrato.setDataFim(Date.valueOf(LocalDate.now().plusMonths(1)));
@@ -57,6 +60,9 @@ public class ContratoController {
             case 3:
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
+                if (Objects.isNull(contratoService.findById(idDelete))) {
+                    throw new NoResultException("Contract not found!");
+                }
                 System.out.println("Deleted: " + contratoService.delete(idDelete));
                 break;
             case 4:

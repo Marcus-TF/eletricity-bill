@@ -38,6 +38,9 @@ public class MedidorController {
             case 2:
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
+                if (Objects.isNull(medidorService.findById(idUpdate))) {
+                    throw new NoResultException("Measurer not found!");
+                }
                 medidor.setDescricao("válida");
                 medidor.setIdPoste(1);
                 medidor.setIdRota(1);
@@ -46,6 +49,9 @@ public class MedidorController {
             case 3:
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
+                if (Objects.isNull(medidorService.findById(idDelete))) {
+                    throw new NoResultException("Measurer not found!");
+                }
                 System.out.println("Deleted: " + medidorService.delete(idDelete));
                 break;
             case 4:

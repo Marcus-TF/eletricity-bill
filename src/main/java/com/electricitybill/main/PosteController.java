@@ -39,6 +39,9 @@ public class PosteController {
             case 2:
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
+                if (Objects.isNull(posteService.findById(idUpdate))) {
+                    throw new NoResultException("Post not found!");
+                }
                 poste.setLatitude("58.3731");
                 poste.setLongitude("-86.7386");
                 poste.setCodigo("647326349");
@@ -48,6 +51,9 @@ public class PosteController {
             case 3:
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
+                if (Objects.isNull(posteService.findById(idDelete))) {
+                    throw new NoResultException("Post not found!");
+                }
                 System.out.println("Deleted: " + posteService.delete(idDelete));
                 break;
             case 4:

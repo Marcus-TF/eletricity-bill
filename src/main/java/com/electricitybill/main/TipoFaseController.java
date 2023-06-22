@@ -36,12 +36,18 @@ public class TipoFaseController {
             case 2:
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
+                if (Objects.isNull(tipoFaseService.findById(idUpdate))) {
+                    throw new NoResultException("Phase type not found!");
+                }
                 tipoFase.setDescricao("Teste Atualizado");
                 System.out.println("Updated: " + tipoFaseService.update(idUpdate, tipoFase));
                 break;
             case 3:
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
+                if (Objects.isNull(tipoFaseService.findById(idDelete))) {
+                    throw new NoResultException("Phase type not found!");
+                }
                 System.out.println("Deleted: " + tipoFaseService.delete(idDelete));
                 break;
             case 4:

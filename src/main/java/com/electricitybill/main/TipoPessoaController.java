@@ -36,12 +36,18 @@ public class TipoPessoaController {
             case 2:
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
+                if (Objects.isNull(tipoPessoaService.findById(idUpdate))) {
+                    throw new NoResultException("Type person type not found!");
+                }
                 tipoPessoa.setDescricao("Pessoa Juridica");
                 System.out.println("Updated: " + tipoPessoaService.update(idUpdate, tipoPessoa));
                 break;
             case 3:
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
+                if (Objects.isNull(tipoPessoaService.findById(idDelete))) {
+                    throw new NoResultException("Type person type not found!");
+                }
                 System.out.println("Deleted: " + tipoPessoaService.delete(idDelete));
                 break;
             case 4:

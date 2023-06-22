@@ -41,6 +41,9 @@ public class TarefaRotaController {
             case 2:
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
+                if (Objects.isNull(tarefaRotaService.findById(idUpdate))) {
+                    throw new NoResultException("Route task not found!");
+                }
                 tarefaRota.setObservacao("Tarefa Finalizada");
                 tarefaRota.setDataInicio(Date.valueOf(LocalDate.now()));
                 tarefaRota.setDataFim(Date.valueOf(LocalDate.now().minusDays(7)));
@@ -50,6 +53,9 @@ public class TarefaRotaController {
             case 3:
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
+                if (Objects.isNull(tarefaRotaService.findById(idDelete))) {
+                    throw new NoResultException("Route task not found!");
+                }
                 System.out.println("Deleted: " + tarefaRotaService.delete(idDelete));
                 break;
             case 4:

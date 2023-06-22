@@ -43,6 +43,9 @@ public class TarifaController {
             case 2:
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
+                if (Objects.isNull(tarifaService.findById(idUpdate))) {
+                    throw new NoResultException("Tax not found!");
+                }
                 tarifa.setTaxa("Bandeira Verde");
                 tarifa.setClasseId(1);
                 tarifa.setLei("Não");
@@ -54,6 +57,9 @@ public class TarifaController {
             case 3:
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
+                if (Objects.isNull(tarifaService.findById(idDelete))) {
+                    throw new NoResultException("Tax not found!");
+                }
                 System.out.println("Deleted: " + tarifaService.delete(idDelete));
                 break;
             case 4:

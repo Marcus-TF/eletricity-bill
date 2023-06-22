@@ -40,6 +40,9 @@ public class ClasseController {
             case 2:
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
+                if (Objects.isNull(classeService.findById(idUpdate))) {
+                    throw new NoResultException("Class not found!");
+                }
                 classe.setDescricao("Updated Class");
                 classe.setTipoFaseId(1);
                 System.out.println("Updated: " + classeService.update(idUpdate, classe));
@@ -47,6 +50,9 @@ public class ClasseController {
             case 3:
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
+                if (Objects.isNull(classeService.findById(idDelete))) {
+                    throw new NoResultException("Class not found!");
+                }
                 System.out.println("Deleted: " + classeService.delete(idDelete));
                 break;
             case 4:
