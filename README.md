@@ -1,5 +1,5 @@
 # Conta de Energia
-Api mockada para cadeira de BD.
+Api mockada para cadeira de Banco de Dados.
 <div style="display: inline_block"><br>
   <h3>Tecnologias utilizadas</h3>
 <ul>
