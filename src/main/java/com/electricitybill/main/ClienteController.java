@@ -38,9 +38,6 @@ public class ClienteController {
             case 2:
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
-                if (Objects.isNull(clienteService.findById(idUpdate))) {
-                    throw new NoResultException("Client not found!");
-                }
                 cliente.setNumDocumento("4567.0123");
                 cliente.setNumCliente("0002");
                 cliente.setPessoaId(4);
@@ -49,23 +46,14 @@ public class ClienteController {
             case 3:
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
-                if (Objects.isNull(clienteService.findById(idDelete))) {
-                    throw new NoResultException("Client not found!");
-                }
                 System.out.println("Deleted: " + clienteService.delete(idDelete));
                 break;
             case 4:
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
-                if (Objects.isNull(clienteService.findById(idSearch))) {
-                    throw new NoResultException("Individual search not found!");
-                }
                 System.out.println("Individual search: " + clienteService.findById(idSearch));
                 break;
             case 5:
-                if (clienteService.findAll().isEmpty()) {
-                    throw new NoResultException("Search not found!");
-                }
                 System.out.println("Search: " + clienteService.findAll());
                 break;
             default:
