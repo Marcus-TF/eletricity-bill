@@ -1,6 +1,8 @@
 package com.electricitybill.repository;
 
+import com.electricitybill.dto.contrato.ContratoClienteResponse;
 import com.electricitybill.entity.ContratoEntity;
+import com.electricitybill.service.impl.ClienteServiceImpl;
 import com.electricitybill.util.ConectDataBase;
 
 import java.sql.Date;
@@ -14,10 +16,20 @@ public class ContratoRepository extends ConectDataBase {
 
     private static final String SAVE = "INSERT INTO contrato (descricao, data_inicio, data_fim, medidor_id, classe_id, tipo_fase, cliente_id) VALUES(?, ?, ?, ?, ?, ?, ?);";
     private static final String FIND_BY_ID = "SELECT id, descricao, data_inicio, data_fim, medidor_id, classe_id, tipo_fase, cliente_id FROM contrato WHERE id = ?;";
+
     private static final String FIND_ALL = "SELECT * FROM contrato;";
+
     private static final String DELETE = "DELETE FROM contrato WHERE id = ?;";
+
     private static final String UPDATE = "UPDATE contrato SET descricao = ?, data_inicio = ?, data_fim = ?, medidor_id = ?, classe_id = ?, tipo_fase = ?, cliente_id = ? WHERE id = ?;";
+
     private static final String TOTAL = "SELECT count(1) FROM contrato;";
+
+    private static final String FIND_CONTRACT_WITH_CLIENT = "select * from contrato inner join cliente on contrato.cliente_id  = cliente.id;";
+
+    ClienteRepository clienteRepository = new ClienteRepository();
+    ClienteServiceImpl clienteService = new ClienteServiceImpl(clienteRepository);
+
 
     public Integer count() {
         Integer count = 0;
@@ -128,5 +140,30 @@ public class ContratoRepository extends ConectDataBase {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public List<ContratoClienteResponse> findContractWithCliente() {
+        List<ContratoClienteResponse> entityList = new ArrayList<>();
+        try (PreparedStatement preparedStatement = prepararSQL(FIND_CONTRACT_WITH_CLIENT)) {
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String descricao = rs.getString("descricao");
+                Date data_inicio = rs.getDate("data_inicio");
+                Date data_fim = rs.getDate("data_fim");
+                int medidor_id = rs.getInt("medidor_id");
+                int classe_id = rs.getInt("classe_id");
+                int tipo_fase = rs.getInt("tipo_fase");
+                int cliente_id = rs.getInt("cliente_id");
+                var cliente = clienteService.findById(cliente_id);
+                entityList.add(new ContratoClienteResponse(id, descricao, data_inicio, data_fim, medidor_id, classe_id, tipo_fase, cliente));
+            }
+        } catch (SQLException e) {
+            printSQLException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return entityList;
     }
 }

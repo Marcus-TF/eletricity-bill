@@ -1,5 +1,6 @@
 package com.electricitybill.service;
 
+import com.electricitybill.dto.contrato.ContratoClienteResponse;
 import com.electricitybill.entity.ContratoEntity;
 
 import java.sql.SQLException;
@@ -16,4 +17,6 @@ public interface ContratoService {
     boolean update(int id, ContratoEntity entity) throws SQLException;
 
     boolean delete(int id) throws SQLException;
+
+    List<ContratoClienteResponse> findContractWithCliente();
 }

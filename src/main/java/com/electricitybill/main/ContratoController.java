@@ -28,7 +28,8 @@ public class ContratoController {
                 "\n2: Atualizar contrato" +
                 "\n3: Deletar contrato" +
                 "\n4: Buscar contrato Por Id" +
-                "\n5: Buscar Todos");
+                "\n5: Buscar Todos" +
+                "\n6: Buscar contratos que possuem clientes");
         int opcao = ler.nextInt();
 
         switch (opcao) {
@@ -78,6 +79,12 @@ public class ContratoController {
                     throw new NoResultException("Search not found!");
                 }
                 System.out.println("Search: " + contratoService.findAll());
+                break;
+            case 6:
+                if (contratoService.findContractWithCliente().isEmpty()) {
+                    throw new NoResultException("Search not found!");
+                }
+                System.out.println("Search: " + contratoService.findContractWithCliente());
                 break;
             default:
                 System.out.println("Invalid option, Err!");

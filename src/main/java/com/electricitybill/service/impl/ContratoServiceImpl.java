@@ -1,5 +1,6 @@
 package com.electricitybill.service.impl;
 
+import com.electricitybill.dto.contrato.ContratoClienteResponse;
 import com.electricitybill.entity.ContratoEntity;
 import com.electricitybill.repository.ContratoRepository;
 import com.electricitybill.service.ContratoService;
@@ -36,5 +37,10 @@ public class ContratoServiceImpl implements ContratoService {
     @Override
     public boolean delete(int id) throws SQLException {
         return contratoRepository.delete(id);
+    }
+
+    @Override
+    public List<ContratoClienteResponse> findContractWithCliente() {
+        return contratoRepository.findContractWithCliente();
     }
 }
