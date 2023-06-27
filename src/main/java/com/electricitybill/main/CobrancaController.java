@@ -40,9 +40,6 @@ public class CobrancaController {
             case 2:
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
-                if (Objects.isNull(cobrancaService.findById(idUpdate))) {
-                    throw new NoResultException("Billing not found!");
-                }
                 cobranca.setMesReferencia(String.valueOf(LocalDate.now().plusMonths(1).getMonth()));
                 cobranca.setAnoReferencia(String.valueOf(LocalDate.now().getYear()));
                 cobranca.setTarifaId(1);
@@ -52,23 +49,14 @@ public class CobrancaController {
             case 3:
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
-                if (Objects.isNull(cobrancaService.findById(idDelete))) {
-                    throw new NoResultException("Billing not found!");
-                }
                 System.out.println("Deleted: " + cobrancaService.delete(idDelete));
                 break;
             case 4:
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
-                if (Objects.isNull(cobrancaService.findById(idSearch))) {
-                    throw new NoResultException("Individual search not found!");
-                }
                 System.out.println("Individual search: " + cobrancaService.findById(idSearch));
                 break;
             case 5:
-                if (cobrancaService.findAll().isEmpty()) {
-                    throw new NoResultException("Search not found!");
-                }
                 System.out.println("Search: " + cobrancaService.findAll());
                 break;
             default:
