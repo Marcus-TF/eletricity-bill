@@ -42,9 +42,6 @@ public class MedicaoController {
             case 2:
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
-                if (Objects.isNull(medicaoService.findById(idUpdate))) {
-                    throw new NoResultException("Measurement not found!");
-                }
                 medicao.setMes(String.valueOf(LocalDate.now().getMonth()));
                 medicao.setAno(String.valueOf(LocalDate.now().getYear()));
                 medicao.setDataMedicao(Date.valueOf(LocalDate.now()));
@@ -56,23 +53,14 @@ public class MedicaoController {
             case 3:
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
-                if (Objects.isNull(medicaoService.findById(idDelete))) {
-                    throw new NoResultException("Measurement not found!");
-                }
                 System.out.println("Deleted: " + medicaoService.delete(idDelete));
                 break;
             case 4:
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
-                if (Objects.isNull(medicaoService.findById(idSearch))) {
-                    throw new NoResultException("Individual search not found!");
-                }
                 System.out.println("Individual search: " + medicaoService.findById(idSearch));
                 break;
             case 5:
-                if (medicaoService.findAll().isEmpty()) {
-                    throw new NoResultException("Search not found!");
-                }
                 System.out.println("Search: " + medicaoService.findAll());
                 break;
             default:
