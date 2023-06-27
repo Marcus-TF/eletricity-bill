@@ -37,9 +37,6 @@ public class FuncionarioController {
             case 2:
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
-                if (Objects.isNull(funcionarioService.findById(idUpdate))) {
-                    throw new NoResultException("Employee not found!");
-                }
                 funcionario.setCodigoFuncional("4567.0123");
                 funcionario.setPessoaId(4);
                 System.out.println("Updated: " + funcionarioService.update(idUpdate, funcionario));
@@ -47,23 +44,15 @@ public class FuncionarioController {
             case 3:
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
-                if (Objects.isNull(funcionarioService.findById(idDelete))) {
-                    throw new NoResultException("Employee not found!");
-                }
                 System.out.println("Deleted: " + funcionarioService.delete(idDelete));
                 break;
             case 4:
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
-                if (Objects.isNull(funcionarioService.findById(idSearch))) {
-                    throw new NoResultException("Individual search not found!");
-                }
+
                 System.out.println("Individual search: " + funcionarioService.findById(idSearch));
                 break;
             case 5:
-                if (funcionarioService.findAll().isEmpty()) {
-                    throw new NoResultException("Search not found!");
-                }
                 System.out.println("Search: " + funcionarioService.findAll());
                 break;
             default:
