@@ -7,7 +7,6 @@ import jakarta.persistence.NoResultException;
 
 import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Scanner;
@@ -23,7 +22,6 @@ public class ContratoController {
 
         // TODO test methods
         var contrato = new ContratoEntity();
-        var timeStamp = new Timestamp(System.currentTimeMillis());
         System.out.println("1: Salvar contrato" +
                 "\n2: Atualizar contrato" +
                 "\n3: Deletar contrato" +
@@ -46,9 +44,6 @@ public class ContratoController {
             case 2:
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
-                if (Objects.isNull(contratoService.findById(idUpdate))) {
-                    throw new NoResultException("Contract not found!");
-                }
                 contrato.setDescricao("Gato removido!");
                 contrato.setDataInicio(Date.valueOf(LocalDate.now()));
                 contrato.setDataFim(Date.valueOf(LocalDate.now().plusMonths(1)));
@@ -61,29 +56,17 @@ public class ContratoController {
             case 3:
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
-                if (Objects.isNull(contratoService.findById(idDelete))) {
-                    throw new NoResultException("Contract not found!");
-                }
                 System.out.println("Deleted: " + contratoService.delete(idDelete));
                 break;
             case 4:
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
-                if (Objects.isNull(contratoService.findById(idSearch))) {
-                    throw new NoResultException("Individual search not found!");
-                }
                 System.out.println("Individual search: " + contratoService.findById(idSearch));
                 break;
             case 5:
-                if (contratoService.findAll().isEmpty()) {
-                    throw new NoResultException("Search not found!");
-                }
                 System.out.println("Search: " + contratoService.findAll());
                 break;
             case 6:
-                if (contratoService.findContractWithCliente().isEmpty()) {
-                    throw new NoResultException("Search not found!");
-                }
                 System.out.println("Search: " + contratoService.findContractWithCliente());
                 break;
             default:

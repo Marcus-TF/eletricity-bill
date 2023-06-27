@@ -75,13 +75,13 @@ public class ContratoRepository extends ConectDataBase {
 
             while (rs.next()) {
                 String descricao = rs.getString("descricao");
-                Date data_inicio = rs.getDate("data_inicio");
-                Date data_fim = rs.getDate("data_fim");
-                int medidor_id = rs.getInt("medidor_id");
-                int classe_id = rs.getInt("classe_id");
-                int tipo_fase = rs.getInt("tipo_fase");
-                int cliente_id = rs.getInt("cliente_id");
-                entity = new ContratoEntity(id, descricao, data_inicio, data_fim, medidor_id, classe_id, tipo_fase, cliente_id);
+                Date dataInicio = rs.getDate("data_inicio");
+                Date dataFim = rs.getDate("data_fim");
+                int medidorId = rs.getInt("medidor_id");
+                int classeId = rs.getInt("classe_id");
+                int tipoFase = rs.getInt("tipo_fase");
+                int clienteId = rs.getInt("cliente_id");
+                entity = new ContratoEntity(id, descricao, dataInicio, dataFim, medidorId, classeId, tipoFase, clienteId);
                 return entity;
             }
         } catch (SQLException e) {
@@ -100,13 +100,13 @@ public class ContratoRepository extends ConectDataBase {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String descricao = rs.getString("descricao");
-                Date data_inicio = rs.getDate("data_inicio");
-                Date data_fim = rs.getDate("data_fim");
-                int medidor_id = rs.getInt("medidor_id");
-                int classe_id = rs.getInt("classe_id");
-                int tipo_fase = rs.getInt("tipo_fase");
-                int cliente_id = rs.getInt("cliente_id");
-                entityList.add(new ContratoEntity(id, descricao, data_inicio, data_fim, medidor_id, classe_id, tipo_fase, cliente_id));
+                Date dataInicio = rs.getDate("data_inicio");
+                Date dataFim = rs.getDate("data_fim");
+                int medidorId = rs.getInt("medidor_id");
+                int classeId = rs.getInt("classe_id");
+                int tipoFase = rs.getInt("tipo_fase");
+                int clienteId = rs.getInt("cliente_id");
+                entityList.add(new ContratoEntity(id, descricao, dataInicio, dataFim, medidorId, classeId, tipoFase, clienteId));
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -150,14 +150,14 @@ public class ContratoRepository extends ConectDataBase {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String descricao = rs.getString("descricao");
-                Date data_inicio = rs.getDate("data_inicio");
-                Date data_fim = rs.getDate("data_fim");
-                int medidor_id = rs.getInt("medidor_id");
-                int classe_id = rs.getInt("classe_id");
-                int tipo_fase = rs.getInt("tipo_fase");
-                int cliente_id = rs.getInt("cliente_id");
-                var cliente = clienteService.findById(cliente_id);
-                entityList.add(new ContratoClienteResponse(id, descricao, data_inicio, data_fim, medidor_id, classe_id, tipo_fase, cliente));
+                Date dataInicio = rs.getDate("data_inicio");
+                Date dataFim = rs.getDate("data_fim");
+                int medidorId = rs.getInt("medidor_id");
+                int classeId = rs.getInt("classe_id");
+                int tipoFase = rs.getInt("tipo_fase");
+                int clienteId = rs.getInt("cliente_id");
+                var cliente = clienteService.findById(clienteId);
+                entityList.add(new ContratoClienteResponse(id, descricao, dataInicio, dataFim, medidorId, classeId, tipoFase, cliente));
             }
         } catch (SQLException e) {
             printSQLException(e);
