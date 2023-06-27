@@ -36,32 +36,20 @@ public class RotaController {
             case 2:
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
-                if (Objects.isNull(rotaService.findById(idUpdate))) {
-                    throw new NoResultException("Route not found!");
-                }
                 rota.setDescricao("Parangaba");
                 System.out.println("Updated: " + rotaService.update(idUpdate, rota));
                 break;
             case 3:
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
-                if (Objects.isNull(rotaService.findById(idDelete))) {
-                    throw new NoResultException("Route not found!");
-                }
                 System.out.println("Deleted: " + rotaService.delete(idDelete));
                 break;
             case 4:
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
-                if (Objects.isNull(rotaService.findById(idSearch))) {
-                    throw new NoResultException("Individual search not found!");
-                }
                 System.out.println("Individual search: " + rotaService.findById(idSearch));
                 break;
             case 5:
-                if (rotaService.findAll().isEmpty()) {
-                    throw new NoResultException("Search not found!");
-                }
                 System.out.println("Search: " + rotaService.findAll());
                 break;
             default:
