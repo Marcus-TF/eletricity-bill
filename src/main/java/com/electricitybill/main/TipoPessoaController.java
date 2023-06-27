@@ -36,32 +36,20 @@ public class TipoPessoaController {
             case 2:
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
-                if (Objects.isNull(tipoPessoaService.findById(idUpdate))) {
-                    throw new NoResultException("Type person type not found!");
-                }
                 tipoPessoa.setDescricao("Pessoa Juridica");
                 System.out.println("Updated: " + tipoPessoaService.update(idUpdate, tipoPessoa));
                 break;
             case 3:
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
-                if (Objects.isNull(tipoPessoaService.findById(idDelete))) {
-                    throw new NoResultException("Type person type not found!");
-                }
                 System.out.println("Deleted: " + tipoPessoaService.delete(idDelete));
                 break;
             case 4:
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
-                if (Objects.isNull(tipoPessoaService.findById(idSearch))) {
-                    throw new NoResultException("Individual search not found!");
-                }
                 System.out.println("Individual search: " + tipoPessoaService.findById(idSearch));
                 break;
             case 5:
-                if (tipoPessoaService.findAll().isEmpty()) {
-                    throw new NoResultException("Search not found!");
-                }
                 System.out.println("Search: " + tipoPessoaService.findAll());
                 break;
             default:
