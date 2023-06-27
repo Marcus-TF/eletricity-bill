@@ -8,6 +8,7 @@ import jakarta.persistence.NoResultException;
 import lombok.AllArgsConstructor;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,7 +20,7 @@ public class ContratoServiceImpl implements ContratoService {
     @Override
     public List<ContratoEntity> findAll() {
         if (contratoRepository.findAll().isEmpty()) {
-            throw new NoResultException("Search not found!");
+            return new ArrayList<>();
         }
         return contratoRepository.findAll();
     }

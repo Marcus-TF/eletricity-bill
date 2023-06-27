@@ -7,6 +7,7 @@ import jakarta.persistence.NoResultException;
 import lombok.AllArgsConstructor;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +19,7 @@ public class TarefaRotaServiceImpl implements TarefaRotaService {
     @Override
     public List<TarefaRotaEntity> findAll() {
         if (tarefaRotaRepository.findAll().isEmpty()) {
-            throw new NoResultException("Search not found!");
+            return new ArrayList<>();
         }
         return tarefaRotaRepository.findAll();
     }

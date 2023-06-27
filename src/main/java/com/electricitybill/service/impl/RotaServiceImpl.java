@@ -7,6 +7,7 @@ import jakarta.persistence.NoResultException;
 import lombok.AllArgsConstructor;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +19,7 @@ public class RotaServiceImpl implements RotaService {
     @Override
     public List<RotaEntity> findAll() {
         if (rotaRepository.findAll().isEmpty()) {
-            throw new NoResultException("Search not found!");
+            return new ArrayList<>();
         }
         return rotaRepository.findAll();
     }

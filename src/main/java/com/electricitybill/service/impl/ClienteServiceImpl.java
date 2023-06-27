@@ -7,6 +7,7 @@ import jakarta.persistence.NoResultException;
 import lombok.AllArgsConstructor;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +19,7 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public List<ClienteEntity> findAll() {
         if (clienteRepository.findAll().isEmpty()) {
-            throw new NoResultException("Search not found!");
+            return new ArrayList<>();
         }
         return clienteRepository.findAll();
     }
