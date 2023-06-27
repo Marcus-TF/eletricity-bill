@@ -39,9 +39,6 @@ public class PessoaController {
             case 2:
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
-                if (Objects.isNull(pessoaService.findById(idUpdate))) {
-                    throw new NoResultException("Person not found!");
-                }
                 pessoa.setNome("Marcus Túlio Moreira Prudêncio Filho");
                 pessoa.setCpf("869.392.980-10");
                 pessoa.setCnpj("78.248.963/0001-04");
@@ -51,23 +48,14 @@ public class PessoaController {
             case 3:
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
-                if (Objects.isNull(pessoaService.findById(idDelete))) {
-                    throw new NoResultException("Person not found!");
-                }
                 System.out.println("Deleted: " + pessoaService.delete(idDelete));
                 break;
             case 4:
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
-                if (Objects.isNull(pessoaService.findById(idSearch))) {
-                    throw new NoResultException("Individual search not found!");
-                }
                 System.out.println("Individual search: " + pessoaService.findById(idSearch));
                 break;
             case 5:
-                if (pessoaService.findAll().isEmpty()) {
-                    throw new NoResultException("Search not found!");
-                }
                 System.out.println("Search: " + pessoaService.findAll());
                 break;
             default:
