@@ -26,7 +26,8 @@ public class MedicaoController {
                 "\n2: Atualizar medicao" +
                 "\n3: Deletar medicao" +
                 "\n4: Buscar medicao Por Id" +
-                "\n5: Buscar Todos");
+                "\n5: Buscar Todos" +
+                "\n6: Buscar Medições que contém medidor");
         int opcao = ler.nextInt();
 
         switch (opcao) {
@@ -61,6 +62,7 @@ public class MedicaoController {
                 System.out.println("Individual search: " + medicaoService.findById(idSearch));
             }
             case 5 -> System.out.println("Search: " + medicaoService.findAll());
+            case 6 -> System.out.println("Search: " + medicaoService.findWithRouteTeam());
             default -> System.out.println("Invalid option, Err!");
         }
     }

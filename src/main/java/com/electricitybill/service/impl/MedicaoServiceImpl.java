@@ -1,5 +1,6 @@
 package com.electricitybill.service.impl;
 
+import com.electricitybill.dto.medicao.MedicaoMedidorResponse;
 import com.electricitybill.entity.MedicaoEntity;
 import com.electricitybill.repository.MedicaoRepository;
 import com.electricitybill.service.MedicaoService;
@@ -51,5 +52,13 @@ public class MedicaoServiceImpl implements MedicaoService {
             throw new NoResultException("Measurement not found!");
         }
         return medicaoRepository.delete(id);
+    }
+
+    @Override
+    public List<MedicaoMedidorResponse> findWithRouteTeam() {
+        if (medicaoRepository.findWithRouteTeam().isEmpty()) {
+            return new ArrayList<>();
+        }
+        return medicaoRepository.findWithRouteTeam();
     }
 }

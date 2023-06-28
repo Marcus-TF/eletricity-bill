@@ -1,5 +1,6 @@
 package com.electricitybill.service;
 
+import com.electricitybill.dto.medicao.MedicaoMedidorResponse;
 import com.electricitybill.entity.MedicaoEntity;
 
 import java.sql.SQLException;
@@ -16,4 +17,7 @@ public interface MedicaoService {
     boolean update(int id, MedicaoEntity entity) throws SQLException;
 
     boolean delete(int id) throws SQLException;
+
+    List<MedicaoMedidorResponse> findWithRouteTeam();
+
 }
