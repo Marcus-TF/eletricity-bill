@@ -1,6 +1,6 @@
 package com.electricitybill.service;
 
-import com.electricitybill.dto.conta.ContaLuz;
+import com.electricitybill.dto.conta.ContaLuzResponse;
 import com.electricitybill.entity.ContaLuzEntity;
 
 import java.sql.SQLException;
@@ -10,7 +10,7 @@ public interface ContaLuzService {
 
     List<ContaLuzEntity> findAll();
 
-    ContaLuz findById(int id);
+    ContaLuzResponse findById(int id);
 
     ContaLuzEntity save(ContaLuzEntity entity);
 

@@ -1,7 +1,6 @@
 package com.electricitybill.repository;
 
-import com.electricitybill.dto.conta.ContaLuz;
-import com.electricitybill.entity.CobrancaEntity;
+import com.electricitybill.dto.conta.ContaLuzResponse;
 import com.electricitybill.entity.ContaLuzEntity;
 import com.electricitybill.service.impl.*;
 import com.electricitybill.util.ConectDataBase;
@@ -63,8 +62,8 @@ public class ContaLuzRepository extends ConectDataBase {
         return null;
     }
 
-    public ContaLuz findById(int id) {
-        ContaLuz entity = null;
+    public ContaLuzResponse findById(int id) {
+        ContaLuzResponse entity = null;
         try (PreparedStatement preparedStatement = prepararSQL(FIND_BY_ID)) {
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
@@ -78,7 +77,7 @@ public class ContaLuzRepository extends ConectDataBase {
                 var medicao = medicaoService.findById(medicao_id);
                 var cobranca = cobrancaService.findById(cobranca_id);
                 var tarifa = tarifaService.findById(tarifa_id);
-                entity = new ContaLuz(id,cliente, medicao, cobranca, tarifa);
+                entity = new ContaLuzResponse(id,cliente, medicao, cobranca, tarifa);
                 return entity;
             }
         } catch (SQLException e) {

@@ -1,6 +1,6 @@
 package com.electricitybill.service.impl;
 
-import com.electricitybill.dto.conta.ContaLuz;
+import com.electricitybill.dto.conta.ContaLuzResponse;
 import com.electricitybill.entity.ContaLuzEntity;
 import com.electricitybill.repository.ContaLuzRepository;
 import com.electricitybill.service.ContaLuzService;
@@ -20,7 +20,7 @@ public class ContaLuzServiceImpl implements ContaLuzService {
     }
 
     @Override
-    public ContaLuz findById(int id) {
+    public ContaLuzResponse findById(int id) {
         return contaLuzRepository.findById(id);
     }
 

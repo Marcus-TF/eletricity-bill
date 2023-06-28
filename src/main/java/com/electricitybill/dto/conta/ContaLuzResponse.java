@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ContaLuz {
+public class ContaLuzResponse {
 
     private int id;
 
