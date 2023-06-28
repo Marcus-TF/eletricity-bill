@@ -31,14 +31,14 @@ public class TarefaRotaController {
         int opcao = ler.nextInt();
 
         switch (opcao) {
-            case 1:
+            case 1 -> {
                 tarefaRota.setObservacao("Tarefa Incompleta");
                 tarefaRota.setDataInicio(Date.valueOf(LocalDate.now()));
                 tarefaRota.setDataFim(Date.valueOf(LocalDate.now().minusDays(7)));
                 tarefaRota.setRotaId(1);
                 System.out.println("Saved: " + tarefaRotaService.save(tarefaRota));
-                break;
-            case 2:
+            }
+            case 2 -> {
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
                 tarefaRota.setObservacao("Tarefa Finalizada");
@@ -46,22 +46,19 @@ public class TarefaRotaController {
                 tarefaRota.setDataFim(Date.valueOf(LocalDate.now().minusDays(7)));
                 tarefaRota.setRotaId(1);
                 System.out.println("Updated: " + tarefaRotaService.update(idUpdate, tarefaRota));
-                break;
-            case 3:
+            }
+            case 3 -> {
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
                 System.out.println("Deleted: " + tarefaRotaService.delete(idDelete));
-                break;
-            case 4:
+            }
+            case 4 -> {
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
                 System.out.println("Individual search: " + tarefaRotaService.findById(idSearch));
-                break;
-            case 5:
-                System.out.println("Search: " + tarefaRotaService.findAll());
-                break;
-            default:
-                System.out.println("Invalid option, Err!");
+            }
+            case 5 -> System.out.println("Search: " + tarefaRotaService.findAll());
+            default -> System.out.println("Invalid option, Err!");
         }
     }
 }

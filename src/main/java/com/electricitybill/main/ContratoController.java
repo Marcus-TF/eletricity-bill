@@ -31,7 +31,7 @@ public class ContratoController {
         int opcao = ler.nextInt();
 
         switch (opcao) {
-            case 1:
+            case 1 -> {
                 contrato.setDescricao("Tem Gato!");
                 contrato.setDataInicio(Date.valueOf(LocalDate.now()));
                 contrato.setDataFim(Date.valueOf(LocalDate.now().plusMonths(1)));
@@ -40,8 +40,8 @@ public class ContratoController {
                 contrato.setTipoFase(1);
                 contrato.setClienteId(1);
                 System.out.println("Saved: " + contratoService.save(contrato));
-                break;
-            case 2:
+            }
+            case 2 -> {
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
                 contrato.setDescricao("Gato removido!");
@@ -52,25 +52,20 @@ public class ContratoController {
                 contrato.setTipoFase(1);
                 contrato.setClienteId(1);
                 System.out.println("Updated: " + contratoService.update(idUpdate, contrato));
-                break;
-            case 3:
+            }
+            case 3 -> {
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
                 System.out.println("Deleted: " + contratoService.delete(idDelete));
-                break;
-            case 4:
+            }
+            case 4 -> {
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
                 System.out.println("Individual search: " + contratoService.findById(idSearch));
-                break;
-            case 5:
-                System.out.println("Search: " + contratoService.findAll());
-                break;
-            case 6:
-                System.out.println("Search: " + contratoService.findContractWithCliente());
-                break;
-            default:
-                System.out.println("Invalid option, Err!");
+            }
+            case 5 -> System.out.println("Search: " + contratoService.findAll());
+            case 6 -> System.out.println("Search: " + contratoService.findContractWithCliente());
+            default -> System.out.println("Invalid option, Err!");
         }
     }
 }

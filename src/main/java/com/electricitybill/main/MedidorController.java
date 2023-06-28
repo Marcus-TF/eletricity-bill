@@ -29,35 +29,32 @@ public class MedidorController {
         int opcao = ler.nextInt();
 
         switch (opcao) {
-            case 1:
+            case 1 -> {
                 medidor.setDescricao("inválida");
                 medidor.setIdPoste(1);
                 medidor.setIdRota(1);
                 System.out.println("Saved: " + medidorService.save(medidor));
-                break;
-            case 2:
+            }
+            case 2 -> {
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
                 medidor.setDescricao("válida");
                 medidor.setIdPoste(1);
                 medidor.setIdRota(1);
                 System.out.println("Updated: " + medidorService.update(idUpdate, medidor));
-                break;
-            case 3:
+            }
+            case 3 -> {
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
                 System.out.println("Deleted: " + medidorService.delete(idDelete));
-                break;
-            case 4:
+            }
+            case 4 -> {
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
                 System.out.println("Individual search: " + medidorService.findById(idSearch));
-                break;
-            case 5:
-                System.out.println("Search: " + medidorService.findAll());
-                break;
-            default:
-                System.out.println("Invalid option, Err!");
+            }
+            case 5 -> System.out.println("Search: " + medidorService.findAll());
+            default -> System.out.println("Invalid option, Err!");
         }
     }
 }

@@ -29,31 +29,28 @@ public class TipoPessoaController {
         int opcao = ler.nextInt();
 
         switch (opcao) {
-            case 1:
+            case 1 -> {
                 tipoPessoa.setDescricao("Pessoa Física");
                 System.out.println("Saved: " + tipoPessoaService.save(tipoPessoa));
-                break;
-            case 2:
+            }
+            case 2 -> {
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
                 tipoPessoa.setDescricao("Pessoa Juridica");
                 System.out.println("Updated: " + tipoPessoaService.update(idUpdate, tipoPessoa));
-                break;
-            case 3:
+            }
+            case 3 -> {
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
                 System.out.println("Deleted: " + tipoPessoaService.delete(idDelete));
-                break;
-            case 4:
+            }
+            case 4 -> {
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
                 System.out.println("Individual search: " + tipoPessoaService.findById(idSearch));
-                break;
-            case 5:
-                System.out.println("Search: " + tipoPessoaService.findAll());
-                break;
-            default:
-                System.out.println("Invalid option, Err!");
+            }
+            case 5 -> System.out.println("Search: " + tipoPessoaService.findAll());
+            default -> System.out.println("Invalid option, Err!");
         }
     }
 }

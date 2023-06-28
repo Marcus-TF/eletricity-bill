@@ -31,7 +31,7 @@ public class TarifaController {
         int opcao = ler.nextInt();
 
         switch (opcao) {
-            case 1:
+            case 1 -> {
                 tarifa.setTaxa("Bandeira Amarela");
                 tarifa.setClasseId(1);
                 tarifa.setLei("Não");
@@ -39,8 +39,8 @@ public class TarifaController {
                 tarifa.setDataFim(Date.valueOf(LocalDate.now().plusMonths(1)));
                 tarifa.setAliquotaIcms("17%");
                 System.out.println("Saved: " + tarifaService.save(tarifa));
-                break;
-            case 2:
+            }
+            case 2 -> {
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
                 tarifa.setTaxa("Bandeira Verde");
@@ -50,22 +50,19 @@ public class TarifaController {
                 tarifa.setDataFim(Date.valueOf(LocalDate.now().plusDays(7).plusMonths(1)));
                 tarifa.setAliquotaIcms("15%");
                 System.out.println("Updated: " + tarifaService.update(idUpdate, tarifa));
-                break;
-            case 3:
+            }
+            case 3 -> {
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
                 System.out.println("Deleted: " + tarifaService.delete(idDelete));
-                break;
-            case 4:
+            }
+            case 4 -> {
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
                 System.out.println("Individual search: " + tarifaService.findById(idSearch));
-                break;
-            case 5:
-                System.out.println("Search: " + tarifaService.findAll());
-                break;
-            default:
-                System.out.println("Invalid option, Err!");
+            }
+            case 5 -> System.out.println("Search: " + tarifaService.findAll());
+            default -> System.out.println("Invalid option, Err!");
         }
     }
 }

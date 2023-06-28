@@ -29,14 +29,14 @@ public class PessoaController {
         int opcao = ler.nextInt();
 
         switch (opcao) {
-            case 1:
+            case 1 -> {
                 pessoa.setNome("Marcus Túlio");
                 pessoa.setCpf("443.349.840-88");
                 pessoa.setCnpj("98.691.270/0001-90");
                 pessoa.setTipoPessoaId(1);
                 System.out.println("Saved: " + pessoaService.save(pessoa));
-                break;
-            case 2:
+            }
+            case 2 -> {
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
                 pessoa.setNome("Marcus Túlio Moreira Prudêncio Filho");
@@ -44,22 +44,19 @@ public class PessoaController {
                 pessoa.setCnpj("78.248.963/0001-04");
                 pessoa.setTipoPessoaId(1);
                 System.out.println("Updated: " + pessoaService.update(idUpdate, pessoa));
-                break;
-            case 3:
+            }
+            case 3 -> {
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
                 System.out.println("Deleted: " + pessoaService.delete(idDelete));
-                break;
-            case 4:
+            }
+            case 4 -> {
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
                 System.out.println("Individual search: " + pessoaService.findById(idSearch));
-                break;
-            case 5:
-                System.out.println("Search: " + pessoaService.findAll());
-                break;
-            default:
-                System.out.println("Invalid option, Err!");
+            }
+            case 5 -> System.out.println("Search: " + pessoaService.findAll());
+            default -> System.out.println("Invalid option, Err!");
         }
     }
 }

@@ -30,14 +30,14 @@ public class CobrancaController {
         int opcao = ler.nextInt();
 
         switch (opcao) {
-            case 1:
+            case 1 -> {
                 cobranca.setMesReferencia(String.valueOf(LocalDate.now().getMonth()));
                 cobranca.setAnoReferencia(String.valueOf(LocalDate.now().getYear()));
                 cobranca.setTarifaId(1);
                 cobranca.setMedicaoId(2);
                 System.out.println("Saved: " + cobrancaService.save(cobranca));
-                break;
-            case 2:
+            }
+            case 2 -> {
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
                 cobranca.setMesReferencia(String.valueOf(LocalDate.now().plusMonths(1).getMonth()));
@@ -45,22 +45,19 @@ public class CobrancaController {
                 cobranca.setTarifaId(1);
                 cobranca.setMedicaoId(2);
                 System.out.println("Updated: " + cobrancaService.update(idUpdate, cobranca));
-                break;
-            case 3:
+            }
+            case 3 -> {
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
                 System.out.println("Deleted: " + cobrancaService.delete(idDelete));
-                break;
-            case 4:
+            }
+            case 4 -> {
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
                 System.out.println("Individual search: " + cobrancaService.findById(idSearch));
-                break;
-            case 5:
-                System.out.println("Search: " + cobrancaService.findAll());
-                break;
-            default:
-                System.out.println("Invalid option, Err!");
+            }
+            case 5 -> System.out.println("Search: " + cobrancaService.findAll());
+            default -> System.out.println("Invalid option, Err!");
         }
     }
 }

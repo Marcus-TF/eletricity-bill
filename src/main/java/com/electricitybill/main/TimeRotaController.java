@@ -32,33 +32,30 @@ public class TimeRotaController {
         int opcao = ler.nextInt();
 
         switch (opcao) {
-            case 1:
+            case 1 -> {
                 timeRota.setFuncionarioId(1);
                 timeRota.setTarefaRotaId(1);
                 System.out.println("Saved: " + timeRotaService.save(timeRota));
-                break;
-            case 2:
+            }
+            case 2 -> {
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
                 timeRota.setFuncionarioId(1);
                 timeRota.setTarefaRotaId(1);
                 System.out.println("Updated: " + timeRotaService.update(idUpdate, timeRota));
-                break;
-            case 3:
+            }
+            case 3 -> {
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
                 System.out.println("Deleted: " + timeRotaService.delete(idDelete));
-                break;
-            case 4:
+            }
+            case 4 -> {
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
                 System.out.println("Individual search: " + timeRotaService.findById(idSearch));
-                break;
-            case 5:
-                System.out.println("Search: " + timeRotaService.findAll());
-                break;
-            default:
-                System.out.println("Invalid option, Err!");
+            }
+            case 5 -> System.out.println("Search: " + timeRotaService.findAll());
+            default -> System.out.println("Invalid option, Err!");
         }
     }
 }

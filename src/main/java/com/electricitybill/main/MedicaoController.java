@@ -30,7 +30,7 @@ public class MedicaoController {
         int opcao = ler.nextInt();
 
         switch (opcao) {
-            case 1:
+            case 1 -> {
                 medicao.setMes(String.valueOf(LocalDate.now().getMonth()));
                 medicao.setAno(String.valueOf(LocalDate.now().getYear()));
                 medicao.setDataMedicao(Date.valueOf(LocalDate.now()));
@@ -38,8 +38,8 @@ public class MedicaoController {
                 medicao.setMedidorId(1);
                 medicao.setTimeRotaId(1);
                 System.out.println("Saved: " + medicaoService.save(medicao));
-                break;
-            case 2:
+            }
+            case 2 -> {
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
                 medicao.setMes(String.valueOf(LocalDate.now().getMonth()));
@@ -49,22 +49,19 @@ public class MedicaoController {
                 medicao.setMedidorId(1);
                 medicao.setTimeRotaId(1);
                 System.out.println("Updated: " + medicaoService.update(idUpdate, medicao));
-                break;
-            case 3:
+            }
+            case 3 -> {
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
                 System.out.println("Deleted: " + medicaoService.delete(idDelete));
-                break;
-            case 4:
+            }
+            case 4 -> {
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
                 System.out.println("Individual search: " + medicaoService.findById(idSearch));
-                break;
-            case 5:
-                System.out.println("Search: " + medicaoService.findAll());
-                break;
-            default:
-                System.out.println("Invalid option, Err!");
+            }
+            case 5 -> System.out.println("Search: " + medicaoService.findAll());
+            default -> System.out.println("Invalid option, Err!");
         }
     }
 }

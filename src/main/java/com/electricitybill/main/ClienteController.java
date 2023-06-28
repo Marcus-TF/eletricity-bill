@@ -29,35 +29,32 @@ public class ClienteController {
         int opcao = ler.nextInt();
 
         switch (opcao) {
-            case 1:
+            case 1 -> {
                 cliente.setNumDocumento("0123.4567");
                 cliente.setNumCliente("0001");
                 cliente.setPessoaId(4);
                 System.out.println("Saved: " + clienteService.save(cliente));
-                break;
-            case 2:
+            }
+            case 2 -> {
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
                 cliente.setNumDocumento("4567.0123");
                 cliente.setNumCliente("0002");
                 cliente.setPessoaId(4);
                 System.out.println("Updated: " + clienteService.update(idUpdate, cliente));
-                break;
-            case 3:
+            }
+            case 3 -> {
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
                 System.out.println("Deleted: " + clienteService.delete(idDelete));
-                break;
-            case 4:
+            }
+            case 4 -> {
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
                 System.out.println("Individual search: " + clienteService.findById(idSearch));
-                break;
-            case 5:
-                System.out.println("Search: " + clienteService.findAll());
-                break;
-            default:
-                System.out.println("Invalid option, Err!");
+            }
+            case 5 -> System.out.println("Search: " + clienteService.findAll());
+            default -> System.out.println("Invalid option, Err!");
         }
     }
 }

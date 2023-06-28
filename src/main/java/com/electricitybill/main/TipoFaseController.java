@@ -29,31 +29,28 @@ public class TipoFaseController {
         int opcao = ler.nextInt();
 
         switch (opcao) {
-            case 1:
+            case 1 -> {
                 tipoFase.setDescricao("Teste");
                 System.out.println("Saved: " + tipoFaseService.save(tipoFase));
-                break;
-            case 2:
+            }
+            case 2 -> {
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
                 tipoFase.setDescricao("Teste Atualizado");
                 System.out.println("Updated: " + tipoFaseService.update(idUpdate, tipoFase));
-                break;
-            case 3:
+            }
+            case 3 -> {
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
                 System.out.println("Deleted: " + tipoFaseService.delete(idDelete));
-                break;
-            case 4:
+            }
+            case 4 -> {
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
                 System.out.println("Individual search: " + tipoFaseService.findById(idSearch));
-                break;
-            case 5:
-                System.out.println("Search: " + tipoFaseService.findAll());
-                break;
-            default:
-                System.out.println("Invalid option, Err!");
+            }
+            case 5 -> System.out.println("Search: " + tipoFaseService.findAll());
+            default -> System.out.println("Invalid option, Err!");
         }
     }
 }

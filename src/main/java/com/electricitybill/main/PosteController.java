@@ -29,14 +29,14 @@ public class PosteController {
         int opcao = ler.nextInt();
 
         switch (opcao) {
-            case 1:
+            case 1 -> {
                 poste.setLatitude("-142.4093");
                 poste.setLongitude("-37.4479");
                 poste.setCodigo("647326349");
                 poste.setObservacao("Save");
                 System.out.println("Saved: " + posteService.save(poste));
-                break;
-            case 2:
+            }
+            case 2 -> {
                 System.out.println("Informe o Id que deseja atualizar: ");
                 int idUpdate = ler.nextInt();
                 poste.setLatitude("58.3731");
@@ -44,22 +44,19 @@ public class PosteController {
                 poste.setCodigo("647326349");
                 poste.setObservacao("Update");
                 System.out.println("Updated: " + posteService.update(idUpdate, poste));
-                break;
-            case 3:
+            }
+            case 3 -> {
                 System.out.println("Informe o Id que deseja deletar: ");
                 int idDelete = ler.nextInt();
                 System.out.println("Deleted: " + posteService.delete(idDelete));
-                break;
-            case 4:
+            }
+            case 4 -> {
                 System.out.println("Informe o Id que deseja buscar: ");
                 int idSearch = ler.nextInt();
                 System.out.println("Individual search: " + posteService.findById(idSearch));
-                break;
-            case 5:
-                System.out.println("Search: " + posteService.findAll());
-                break;
-            default:
-                System.out.println("Invalid option, Err!");
+            }
+            case 5 -> System.out.println("Search: " + posteService.findAll());
+            default -> System.out.println("Invalid option, Err!");
         }
     }
 }
